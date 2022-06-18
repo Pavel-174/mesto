@@ -1,6 +1,6 @@
 .profile__name-box{
     display: grid;
-    grid-template-columns: fit-content(80%) min-content;
+    grid-template-columns: fit-content(294px) min-content;
     grid-template-rows: min-content min-content;
     flex-grow: 1;
     margin: 0 30px;
