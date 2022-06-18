@@ -1,0 +1,12 @@
+.header{
+    width: 880px;
+    margin: auto;
+    border-bottom-width: 1px;
+    border-bottom-color: #545454;
+    border-bottom-style:double;
+}
+@media screen and (min-width: 320px) and (max-width: 900px){
+    .header{
+        width: 100%;
+    }
+}

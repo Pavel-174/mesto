@@ -1,0 +1,11 @@
+.photo__like{
+    width: 22px;
+    height: 19px;
+}
+.photo__like:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+.photo__like:focus{
+    background-image: url('../../../images/Union.svg');
+}
