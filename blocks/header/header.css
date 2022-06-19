@@ -2,8 +2,8 @@
     width: 880px;
     margin: auto;
     border-bottom-width: 1px;
-    border-bottom-color: #545454;
-    border-bottom-style:double;
+    border-bottom-color: rgba(84, 84, 84, 0.7);
+    border-bottom-style: solid;
 }
 @media screen and (min-width: 320px) and (max-width: 900px){
     .header{
