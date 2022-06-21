@@ -3,5 +3,5 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
-    margin-right: 30px;
+    margin: 0 30px 0 21px;
 }

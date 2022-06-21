@@ -1,28 +1,29 @@
-let buttonShow = document.querySelector ('.button-show');
-let buttonClose = document.querySelector ('.button-close');
-let popup = document.querySelector ('.popup')
-let formElement = document.querySelector ('.popup__form')
-let nameInput = document.querySelector ('.popup__name') 
-let jobInput = document.querySelector ('.popup__profession')
-let Close = function() {
-  popup.classList.remove('popup__opened')
+let buttonShow = document.querySelector('.button-show');
+let buttonClose = document.querySelector('.button-close');
+let popup = document.querySelector('.popup');
+let formElement = document.querySelector('.popup__form');
+let nameInput = document.querySelector('#popup__name');
+let jobInput = document.querySelector('#popup__profession');
+let profileName = document.querySelector('.profile__name')
+let profileProfession = document.querySelector('.profile__profession')
+
+function popupClose () {
+  popup.classList.remove('popup_opened');
   }
 
-nameInput.value = document.querySelector ('.profile__name').textContent;
-jobInput.value = document.querySelector ('.profile__profession').textContent;
-
-buttonShow.addEventListener ('click', function(evt) {
-  popup.classList.add('popup__opened');
+buttonShow.addEventListener ('click', function() {
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileProfession.textContent;
+  popup.classList.add('popup_opened');
   })
 
-buttonClose.addEventListener ('click', Close)
+buttonClose.addEventListener ('click', popupClose);
 
-function formSubmitHandler (evt) {
-    evt.preventDefault();
-document.querySelector ('.profile__name').textContent = nameInput.value;
-document.querySelector ('.profile__profession').textContent = jobInput.value;
+function formSubmitHandler(evt) {
+  evt.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileProfession.textContent = jobInput.value;
+  popup.classList.remove('popup_opened');
 }
-
-formElement.addEventListener('submit', Close);
 
 formElement.addEventListener('submit', formSubmitHandler); 
