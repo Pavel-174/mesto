@@ -1,0 +1,10 @@
+.photo__delete{
+    background: url(../../../../../Vector-1.svg);
+        background-repeat : no-repeat;
+        overflow: visible;
+        width: 22px;
+        height: 19px;
+        border: none;
+        padding: 0;
+    }
+}

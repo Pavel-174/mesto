@@ -6,6 +6,9 @@ let nameInput = document.querySelector('#popup__name');
 let jobInput = document.querySelector('#popup__profession');
 let profileName = document.querySelector('.profile__name')
 let profileProfession = document.querySelector('.profile__profession')
+let popupPhoto = document.querySelector('.popup_photo');
+let buttonPhotoShow = document.querySelector('.button-photo-show')
+let buttonPhotoClose = document.querySelector('.button-photo-close');
 
 function popupClose () {
   popup.classList.remove('popup_opened');
@@ -27,3 +30,12 @@ function formSubmitHandler(evt) {
 }
 
 formElement.addEventListener('submit', formSubmitHandler); 
+
+buttonPhotoShow.addEventListener ('click', function() {
+  popupPhoto.classList.add('popup_opened');
+})
+
+function popupPhotoClose () {
+  popupPhoto.classList.remove('popup_opened');
+  }
+buttonPhotoClose.addEventListener ('click', popupPhotoClose);
