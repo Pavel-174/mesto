@@ -30,51 +30,19 @@
         </div>
     </section>
     <section class="photo">
-        <ul class="photo__container">
-            <li class="photo__box">
-                <img class="photo__image" src="./images/Члб.jpg" alt="Челябинск">
-                <div class="photo__text-box">
-                    <h2 class="photo__text">Челябинск</h2>
-                    <button class="photo__like" type="button" aria-label="кнопка лайк"></button>
-                </div>
-            </li>
-            <li class="photo__box">
-                <img class="photo__image" src="./images/Екб.jpg" alt="Екатеринбург">
-                <div class="photo__text-box">
-                    <h2 class="photo__text">Екатеринбург</h2>
-                    <button class="photo__like" type="button" aria-label="кнопка лайк"></button>
-                </div>
-            </li>
-            <li class="photo__box">
-                <img class="photo__image" src="./images/СПб.jpg" alt="Санкт-Петербург">
-                <div class="photo__text-box">
-                    <h2 class="photo__text">Санкт-Петербург</h2> 
-                    <button class="photo__like" type="button" aria-label="кнопка лайк"></button>
-                </div>
-            </li>
-            <li class="photo__box">
-                <img class="photo__image" src="./images/Байкал.jpg" alt="Байкал">
-                <div class="photo__text-box">
-                    <h2 class="photo__text">Байкал</h2>
-                    <button class="photo__like" type="button" aria-label="кнопка лайк"></button>
-                </div>
-            </li>
-            <li class="photo__box">
-                <img class="photo__image" src="./images/Калинин.jpg" alt="Калининград">
-                <div class="photo__text-box">
-                    <h2 class="photo__text">Калининград</h2>
-                    <button class="photo__like" type="button" aria-label="кнопка лайк"></button>
-                </div>
-            </li>
-            <li class="photo__box">
-                <img class="photo__image" src="./images/НН.jpeg" alt="Нижний Новгород">
-                <div class="photo__text-box">
-                    <h2 class="photo__text">Нижний Новгород</h2>
-                    <button class="photo__like" type="button" aria-label="кнопка лайк"></button>
-                </div>
-            </li>
+        <ul class="photo__container" id="element-ul">
         </ul>
     </section>
+    <template id="template">
+        <li class="photo__box" id="element-li">
+            <img class="photo__image" id="element-img" src="" alt="">
+            <button class="photo__delete" type="button" aria-label="кнопка удалить"></button>
+            <div class="photo__text-box">
+                <h2 class="photo__text" id="element-h2"></h2>
+                <button class="photo__like" type="button" aria-label="кнопка лайк"></button>
+            </div>
+        </li>
+    </template>
 </main>
 <footer class="footer">
     <p class="footer__text">© 2020 Mesto Russia</p>
@@ -93,7 +61,7 @@
 <div class="popup popup_photo">
     <div class="popup__container">
         <h2 class="popup__header">Новое место</h2>
-        <form class="popup__form" name="name-profession" method="post">
+        <form class="popup__form-photo" name="photo-add" method="post">
             <input class="popup__text" id="popup__place" type="text" placeholder="Название" name="name">
             <input class="popup__text" id="popup__link" type="text" placeholder="Ссылка на картинку" name="profession">
             <input class="popup__save button-hide" type="submit" value="Сохранить">
@@ -101,7 +69,13 @@
         <button class="popup__close button-photo-close" type="button" aria-label="кнопка закрытия"></button>
     </div>
 </div>
+<div class="popup popup_image">
+    <div class="popup__imagebox">
+        <img class="popup__image" id="img1" src="" alt="">
+        <p class="popup__caption" id="caption"></p>
+        <button class="popup__close button-image-close" type="button" aria-label="кнопка закрытия"></button>
+    </div>      
+</div>
 <script src="./scripts/script.js"></script>
-<script src="./scripts/like.js"></script>
 </body>
 </html>
