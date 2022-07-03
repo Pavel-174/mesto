@@ -49,7 +49,7 @@ const button = document.querySelector(".photo__like")
 
 
 {item.querySelector('h2').textContent = 'Екатеринбург'
-item.querySelector('img').src = "./images/Екб.jpg"
+item.querySelector('img').src = "https://mediasole.ru/data/images/468/468254/43s.jpg"
 item.querySelector('img').alt = item.querySelector('#element-h2').textContent
 ul.prepend(item);
 
@@ -64,7 +64,7 @@ let box = document.querySelector('.photo__box')
 item = template.content.cloneNode(true);
 
 {item.querySelector('h2').textContent = 'Челябинск'
-item.querySelector('img').src = "./images/Члб.jpg"
+item.querySelector('img').src = "https://geocaching.su/photos/areas/63865.jpg"
 item.querySelector('img').alt = item.querySelector('#element-h2').textContent
 ul.prepend(item);
 
@@ -79,7 +79,7 @@ let box = document.querySelector('.photo__box')
 item = template.content.cloneNode(true);
 
 {item.querySelector('h2').textContent = 'Санкт-Петербург'
-item.querySelector('img').src = "./images/Спб.jpg"
+item.querySelector('img').src = "https://1001bus-ufa.ru/images/1001/sankt1.jpg"
 item.querySelector('img').alt = item.querySelector('#element-h2').textContent
 ul.prepend(item);
 
@@ -94,7 +94,7 @@ let box = document.querySelector('.photo__box')
 item = template.content.cloneNode(true);
 
 {item.querySelector('h2').textContent = 'Байкал'
-item.querySelector('img').src = "./images/Байкал.jpg"
+item.querySelector('img').src = "https://s.mediasalt.ru/images/375/375941/original.jpg"
 item.querySelector('img').alt = item.querySelector('#element-h2').textContent
 ul.prepend(item);
 
@@ -109,7 +109,7 @@ let box = document.querySelector('.photo__box')
 item = template.content.cloneNode(true);
 
 {item.querySelector('h2').textContent = 'Калининград'
-item.querySelector('img').src = "./images/Калинин.jpg"
+item.querySelector('img').src = "https://www.syl.ru/misc/i/ai/378308/2436551.jpg"
 item.querySelector('img').alt = item.querySelector('#element-h2').textContent
 ul.prepend(item);
 
@@ -124,7 +124,7 @@ let box = document.querySelector('.photo__box')
 item = template.content.cloneNode(true);
 
 {item.querySelector('h2').textContent = 'Нижний Новгород'
-item.querySelector('img').src = "./images/НН.jpeg"
+item.querySelector('img').src = "https://kudann.ru/uploads/29aa4243cab801472fa13993d11909ec.jpeg"
 item.querySelector('img').alt = item.querySelector('#element-h2').textContent
 ul.prepend(item);
 
