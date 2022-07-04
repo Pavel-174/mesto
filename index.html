@@ -15,24 +15,57 @@
             <img class="header__logo" src="./images/logo.svg" alt="логотип">
         </div>
     </header>
-<main>
-    <section class="profile">
-        <div class="profile__content">
-            <img class="profile__image" src="./images/image.jpg" alt="Жак-Ив Кусто">
-            <div class="profile__name-box">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button class="profile__button button-show" type="button" aria-label="кнопка редактирования профиля"></button>
-                <p class="profile__profession">Исследователь океана</p>
+    <main>
+        <section class="profile">
+            <div class="profile__content">
+                <img class="profile__image" src="./images/image.jpg" alt="Жак-Ив Кусто">
+                <div class="profile__name-box">
+                    <h1 class="profile__name">Жак-Ив Кусто</h1>
+                    <button class="profile__button button-show" type="button" aria-label="кнопка редактирования профиля"></button>
+                    <p class="profile__profession">Исследователь океана</p>
+                </div>
+                <button class="profile__button-photo button-show" type="button" aria-label="кнопка добавления фото">
+                    <img src="./images/Vector2.svg" alt="кнопка добавления фото">
+                </button>
             </div>
-            <button class="profile__button-photo button-photo-show" type="button" aria-label="кнопка добавления фото">
-                <img src="./images/Vector2.svg" alt="кнопка добавления фото">
-            </button>
+        </section>
+        <section class="photo">
+            <ul class="photo__container" id="element-ul">
+            </ul>
+         </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__text">© 2020 Mesto Russia</p>
+    </footer>
+    <div class="popup popup_type_profile">
+        <div class="popup__container">
+            <h2 class="popup__header">Редактировать профиль</h2>
+            <form class="popup__form" name="name-profession" method="post">
+                <input required class="popup__text" id="popup__name" type="text" placeholder="Имя" name="name">
+                <input required class="popup__text" id="popup__profession" type="text" placeholder="О себе" name="profession">
+                <input class="popup__save button-hide" type="submit" value="Сохранить">
+            </form>
+            <button class="popup__close button-close" type="button" aria-label="кнопка закрытия"></button>
         </div>
-    </section>
-    <section class="photo">
-        <ul class="photo__container" id="element-ul">
-        </ul>
-    </section>
+    </div>
+    <div class="popup popup_type_photo">
+        <div class="popup__container">
+            <h2 class="popup__header">Новое место</h2>
+            <form class="popup__form-photo" name="photo-add" method="post">
+                <input required class="popup__text" id="popup__place" type="text" placeholder="Название" name="name">
+                <input required class="popup__text" id="popup__link" type="url" placeholder="Ссылка на картинку" name="profession">
+                <input class="popup__save button-hide" type="submit" value="Сохранить">
+            </form>
+            <button class="popup__close button-photo-close" type="button" aria-label="кнопка закрытия"></button>
+        </div>
+    </div>
+    <div class="popup popup_type_image">
+        <div class="popup__image-box">
+            <img class="popup__image" id="img1" src="none" alt="">
+            <p class="popup__caption" id="caption"></p>
+            <button class="popup__close button-image-close" type="button" aria-label="кнопка закрытия"></button>
+        </div>      
+    </div>
     <template id="template">
         <li class="photo__box" id="element-li">
             <img class="photo__image" id="element-img" src="none" alt="">
@@ -43,39 +76,6 @@
             </div>
         </li>
     </template>
-</main>
-<footer class="footer">
-    <p class="footer__text">© 2020 Mesto Russia</p>
-</footer>
-<div class="popup">
-    <div class="popup__container">
-        <h2 class="popup__header">Редактировать профиль</h2>
-        <form class="popup__form" name="name-profession" method="post">
-            <input class="popup__text" id="popup__name" type="text" placeholder="Имя" name="name">
-            <input class="popup__text" id="popup__profession" type="text" placeholder="О себе" name="profession">
-            <input class="popup__save button-hide" type="submit" value="Сохранить">
-        </form>
-        <button class="popup__close button-close" type="button" aria-label="кнопка закрытия"></button>
-    </div>
-</div>
-<div class="popup popup_photo">
-    <div class="popup__container">
-        <h2 class="popup__header">Новое место</h2>
-        <form class="popup__form-photo" name="photo-add" method="post">
-            <input class="popup__text" id="popup__place" type="text" placeholder="Название" name="name">
-            <input class="popup__text" id="popup__link" type="text" placeholder="Ссылка на картинку" name="profession">
-            <input class="popup__save button-hide" type="submit" value="Сохранить">
-        </form>
-        <button class="popup__close button-photo-close" type="button" aria-label="кнопка закрытия"></button>
-    </div>
-</div>
-<div class="popup popup_image">
-    <div class="popup__imagebox">
-        <img class="popup__image" id="img1" src="none" alt="">
-        <p class="popup__caption" id="caption"></p>
-        <button class="popup__close button-image-close" type="button" aria-label="кнопка закрытия"></button>
-    </div>      
-</div>
-<script src="./scripts/script.js"></script>
-</body>
+    <script src="./scripts/script.js"></script>   
+  </body>
 </html>

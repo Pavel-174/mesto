@@ -1,9 +1,9 @@
-.photo{
-    margin: 0 auto;
-    width: 880px;
-}
-@media screen and (min-width: 320px) and (max-width: 900px){
-    .photo{
-        width: 100%;
-    }
+.photo__box{
+    display: flex;
+    flex-direction: column;
+    width: 282px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
 }
