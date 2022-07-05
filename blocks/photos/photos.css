@@ -1,9 +1,9 @@
-.photo{
+.photos{
     margin: 0 auto;
     width: 880px;
 }
 @media screen and (min-width: 320px) and (max-width: 900px){
-    .photo{
+    .photos{
         width: 100%;
     }
 }

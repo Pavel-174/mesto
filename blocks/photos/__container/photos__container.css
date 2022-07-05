@@ -1,4 +1,4 @@
-.photo__container{
+.photos__container{
     display: grid;
     padding: 0;
     margin: 0;
@@ -9,7 +9,7 @@
     row-gap: 20px;
 }
 @media screen and (min-width: 320px) and (max-width: 900px){
-    .photo__container{
+    .photos__container{
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr  1fr 1fr  1fr 1fr;
         justify-items: center;
