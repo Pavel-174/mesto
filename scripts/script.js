@@ -61,6 +61,11 @@ buttonDelete.addEventListener('click', () => {
   box.remove(true);
   })
 }
+//Функция открытия попапа
+
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+} 
 
 //Функция закрытия попапов
 function closePopup(popup) {
@@ -68,11 +73,6 @@ function closePopup(popup) {
 }
 buttonClose.forEach(btn => btn.addEventListener('click', closePopup));
 
-//Функция открытия попапа
-
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-} 
 //Отправка формы редактирования профиля
 
 function handleSubmitProfileForm(evt) {
@@ -98,7 +98,7 @@ const itemImage = item.querySelector('.photo__image')
 
 item.querySelector('h2').textContent = element.title
 itemImage.src = element.link
-itemImage.alt = element.title.textContent
+itemImage.alt = element.title
 
 renderCard(item);
 
