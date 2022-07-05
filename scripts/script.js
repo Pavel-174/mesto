@@ -10,6 +10,8 @@ const popupProfile = document.querySelector('.popup_type_profile');
 const popupPhotoAdd = document.querySelector('.popup_type_photo');
 const cardNameInput = document.querySelector('#popup__place');
 const cardLinkInput = document.querySelector('#popup__link');
+const cardList = document.querySelector('#element-ul');
+const template = document.querySelector('#template');
 const initialCards = [
   { link: "https://kudann.ru/uploads/29aa4243cab801472fa13993d11909ec.jpeg", title: "Нижний Новгород" },
   { link: "https://www.syl.ru/misc/i/ai/378308/2436551.jpg", title: "Калининград" },
@@ -18,6 +20,7 @@ const initialCards = [
   { link: "https://mediasole.ru/data/images/468/468254/43s.jpg", title: "Екатеринбург" },
   { link: "https://tripplanet.ru/wp-content/uploads/europe/russia/chelyabinsk/kirovka.jpg", title: "Челябинск" }
 ]; 
+
 
 //Закрытие попапов(кроме попапа с фото)
 
@@ -54,10 +57,6 @@ formElement.addEventListener('submit', handleSubmitProfileForm);
 
 // 6 card from box
 
-const cardList = document.querySelector('#element-ul');
-const template = document.querySelector('#template');
-const button = document.querySelector(".photo__like");
-
 initialCards.forEach (function (element) {
 const item = template.content.cloneNode(true);
 
@@ -76,7 +75,7 @@ del.addEventListener('click', () => {
 })
 
 //Open photo in popup
-let popupImage = document.querySelector('.popup_type_image');
+const popupImage = document.querySelector('.popup_type_image');
 
 const image = document.querySelector('#element-img');
 const modalImg = document.querySelector("#img1");
@@ -88,7 +87,8 @@ captionText.innerHTML = image.alt;
 });
 
 //кнопка like
-const button = document.querySelector(".photo__like")
+const button = document.querySelector(".photo__like");
+
 button.addEventListener('click', () => {
     button.classList.toggle('photo__like_active');
 })
@@ -132,9 +132,9 @@ function handleSubmitPhotoForm(evt) {
     cardLinkInput.value = "";
 
     // Удаление карточек
-    let box = document.querySelector('.photo__box')
-    const del = document.querySelector(".photo__delete")
-    
+    const box = document.querySelector('.photo__box');
+    const del = document.querySelector(".photo__delete");
+
     del.addEventListener('click', () => {
        box.remove(true);
     })
