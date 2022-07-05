@@ -96,7 +96,7 @@ initialCards.forEach (function (element) {
 const item = template.content.cloneNode(true);
 const itemImage = item.querySelector('.photo__image')
 
-item.querySelector('h2').textContent = element.title
+item.querySelector('.photo__text').textContent = element.title
 itemImage.src = element.link
 itemImage.alt = element.title
 
@@ -114,8 +114,8 @@ function handleSubmitPhotoForm(evt) {
   item = template.content.cloneNode(true);
 
   item.querySelector('.photo__text').textContent = document.querySelector('#popup__place').value;
-  item.querySelector('img').src = document.querySelector('#popup__link').value;
-  item.querySelector('img').alt = item.querySelector('.photo__text').textContent
+  item.querySelector('.photo__image').src = document.querySelector('#popup__link').value;
+  item.querySelector('.photo__image').alt = item.querySelector('.photo__text').textContent
   renderCard(item);
 
   closePopup(popupPhotoAdd);
