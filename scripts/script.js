@@ -21,7 +21,6 @@ const initialCards = [
   { link: "https://mediasole.ru/data/images/468/468254/43s.jpg", title: "Екатеринбург" },
   { link: "https://tripplanet.ru/wp-content/uploads/europe/russia/chelyabinsk/kirovka.jpg", title: "Челябинск" }
 ]
-/////////////////// Функционал попаов
 
 //Функция открытия попапа
 
@@ -126,24 +125,27 @@ initialCards.forEach ((element) => {
   createCard(element);
   renderCard(item);
 });
-
 // Photo-add
-let formElementPhoto = document.querySelector('.popup__form-photo');
+const formElementPhoto = document.querySelector('.popup__form-photo');
 
 function handleSubmitPhotoForm(evt) {
   evt.preventDefault();
 
-  item.querySelector('.photo__text').textContent = document.querySelector('#popup__place').value;
-  item.querySelector('.photo__image').src = document.querySelector('#popup__link').value;
-  item.querySelector('.photo__image').alt = item.querySelector('.photo__text').textContent
-  renderCard(item);
+  const newCards = {
+    title: cardNameInput.value, 
+    link: cardLinkInput.value
+  }; 
+    createCard(newCards);
+    renderCard(item);
 
   closePopup(popupPhotoAdd);
-}
-  
-formElementPhoto.addEventListener('submit', handleSubmitPhotoForm);
+  //Очистка input-ов вставки карточек
 
-popupPhotoAdd.classList.remove('popup_opened');
+  cardNameInput.value = "";
+  cardLinkInput.value = "";
+}
+
+formElementPhoto.addEventListener('submit', handleSubmitPhotoForm);
 
   //Закрытие попапа с фото
   const buttonImageClose = document.querySelector('.button-image-close');
@@ -151,7 +153,3 @@ popupPhotoAdd.classList.remove('popup_opened');
   buttonImageClose.addEventListener ('click', function(){
     closePopup(popupImage);
     });
-
-  //Очистка input-ов вставки карточек
-  cardNameInput.value = "";
-  cardLinkInput.value = "";
