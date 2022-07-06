@@ -20,47 +20,9 @@ const initialCards = [
   { link: "https://1001bus-ufa.ru/images/1001/sankt1.jpg", title: "Санкт-Петербург" },
   { link: "https://mediasole.ru/data/images/468/468254/43s.jpg", title: "Екатеринбург" },
   { link: "https://tripplanet.ru/wp-content/uploads/europe/russia/chelyabinsk/kirovka.jpg", title: "Челябинск" }
-]; 
-// Функция создания карточки
-function createCard(){
-popupPhotoAdd.classList.remove('popup_opened');
+]
+/////////////////// Функционал попаов
 
-//кнопка like
-const buttonLike = document.querySelector(".photo__like")
-buttonLike.addEventListener('click', () => {
-    buttonLike.classList.toggle('photo__like_active');
-})
-
-//Open photo in popup
-const image = document.querySelector('.photo__image');
-const modalImg = document.querySelector(".popup__image");
-const captionText = document.querySelector(".popup__caption");
-
-image.addEventListener('click', function(){
-openPopup(popupImage);
-modalImg.src = image.src;
-captionText.textContent = image.alt;
-});
-
-//Закрытие попапа с фото
-const buttonImageClose = document.querySelector('.button-image-close');
-
-buttonImageClose.addEventListener ('click', function(){
-  closePopup(popupImage);
-  });
-
-//Очистка input-ов вставки карточек
-cardNameInput.value = "";
-cardLinkInput.value = "";
-
-// Удаление карточек
-const box = document.querySelector('.photo__box');
-const buttonDelete = document.querySelector(".photo__delete");
-
-buttonDelete.addEventListener('click', () => {
-  box.remove(true);
-  })
-}
 //Функция открытия попапа
 
 function openPopup(popup) {
@@ -71,7 +33,6 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
-buttonClose.forEach(btn => btn.addEventListener('click', closePopup));
 
 //Отправка формы редактирования профиля
 
@@ -84,6 +45,75 @@ function handleSubmitProfileForm(evt) {
 
 formElement.addEventListener('submit', handleSubmitProfileForm);
 
+//Открытие попапа редактирования профиля
+
+const buttonProfileOpen = document.querySelector('.profile__button');
+  
+buttonProfileOpen.addEventListener('click', function(){
+openPopup(popupProfile);
+nameInput.value = profileName.textContent;
+jobInput.value = profileProfession.textContent;;
+});
+  
+//Закрытие попапа редактирования профиля
+
+const buttonProfileClose = document.querySelector('.button-close')
+
+buttonProfileClose.addEventListener ('click', function(){
+closePopup(popupProfile);
+});
+  
+//Открытие попапа добавки карточек
+
+const buttonPhotoAddOpen = document.querySelector('.profile__button-photo');
+  
+buttonPhotoAddOpen.addEventListener('click', function(){
+openPopup(popupPhotoAdd);
+});
+  
+//Закрытие попапа добавки карточек
+
+const buttonPhotoAddClose = document.querySelector('.button-photo-close')
+
+buttonPhotoAddClose.addEventListener ('click', function(){
+closePopup(popupPhotoAdd);
+});
+
+// Функция создания карточки
+
+function createCard(element){
+  item = template.content.cloneNode(true);
+  const itemImage = item.querySelector('.photo__image')
+
+  item.querySelector('.photo__text').textContent = element.title
+  itemImage.src = element.link
+  itemImage.alt = element.title
+
+  //кнопка like
+  const buttonLike = item.querySelector(".photo__like");
+  buttonLike.addEventListener('click', () => {
+    buttonLike.classList.toggle('photo__like_active');
+  });
+
+  // Удаление карточек
+  const box = item.querySelector('.photo__box');
+  const buttonDelete = item.querySelector(".photo__delete");
+
+  buttonDelete.addEventListener('click', () => {
+    box.remove(true);
+    })
+
+  //Open photo in popup
+  const image = item.querySelector('.photo__image');
+  const modalImg = document.querySelector(".popup__image");
+  const captionText = document.querySelector(".popup__caption");
+
+  image.addEventListener('click', function(){
+  openPopup(popupImage);
+  modalImg.src = image.src;
+  captionText.textContent = image.alt;
+  });
+}
 //Функция отправки формы
 
 function renderCard(item) {
@@ -92,17 +122,9 @@ function renderCard(item) {
 
 // 6 card from box
 
-initialCards.forEach (function (element) {
-const item = template.content.cloneNode(true);
-const itemImage = item.querySelector('.photo__image')
-
-item.querySelector('.photo__text').textContent = element.title
-itemImage.src = element.link
-itemImage.alt = element.title
-
-renderCard(item);
-
-createCard();
+initialCards.forEach ((element) => {
+  createCard(element);
+  renderCard(item);
 });
 
 // Photo-add
@@ -111,51 +133,25 @@ let formElementPhoto = document.querySelector('.popup__form-photo');
 function handleSubmitPhotoForm(evt) {
   evt.preventDefault();
 
-  item = template.content.cloneNode(true);
-
   item.querySelector('.photo__text').textContent = document.querySelector('#popup__place').value;
   item.querySelector('.photo__image').src = document.querySelector('#popup__link').value;
   item.querySelector('.photo__image').alt = item.querySelector('.photo__text').textContent
   renderCard(item);
 
   closePopup(popupPhotoAdd);
-
-  createCard();
 }
   
 formElementPhoto.addEventListener('submit', handleSubmitPhotoForm);
 
-//Открытие попапа редактирования профиля
+popupPhotoAdd.classList.remove('popup_opened');
 
-const buttonProfileOpen = document.querySelector('.profile__button');
-    
-buttonProfileOpen.addEventListener('click', function(){
-  openPopup(popupProfile);
-  //Поля попапа редактирования профиля
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileProfession.textContent;;
-});
-    
-//Закрытие попапа редактирования профиля
+  //Закрытие попапа с фото
+  const buttonImageClose = document.querySelector('.button-image-close');
 
-const buttonProfileClose = document.querySelector('.button-close')
+  buttonImageClose.addEventListener ('click', function(){
+    closePopup(popupImage);
+    });
 
-buttonProfileClose.addEventListener ('click', function(){
-  closePopup(popupProfile);
-});
-    
-//Открытие попапа добавки карточек
-
-const buttonPhotoAddOpen = document.querySelector('.profile__button-photo');
-    
-buttonPhotoAddOpen.addEventListener('click', function(){
-  openPopup(popupPhotoAdd);
-});
-    
-//Закрытие попапа добавки карточек
-
-const buttonPhotoAddClose = document.querySelector('.button-photo-close')
-
-buttonPhotoAddClose.addEventListener ('click', function(){
-  closePopup(popupPhotoAdd);
-});
+  //Очистка input-ов вставки карточек
+  cardNameInput.value = "";
+  cardLinkInput.value = "";
