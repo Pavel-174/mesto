@@ -13,13 +13,36 @@ const cardNameInput = document.querySelector ('#popup__place');
 const cardLinkInput = document.querySelector ('#popup__link');
 const cardList = document.querySelector ('#element-ul');
 const template = document.querySelector ('#template');
+const modalImg = document.querySelector (".popup__image");
+const captionText = document.querySelector (".popup__caption");
+const buttonProfileOpen = document.querySelector ('.profile__button');
+const buttonProfileClose = document.querySelector ('.button-close');
+const buttonPhotoAddOpen = document.querySelector ('.profile__button-photo');
+const buttonPhotoAddClose = document.querySelector ('.button-photo-close');
 const initialCards = [
-  { link: "https://kudann.ru/uploads/29aa4243cab801472fa13993d11909ec.jpeg", title: "Нижний Новгород" },
-  { link: "https://www.syl.ru/misc/i/ai/378308/2436551.jpg", title: "Калининград" },
-  { link: "https://s.mediasalt.ru/images/375/375941/original.jpg", title: "Байкал" },
-  { link: "https://1001bus-ufa.ru/images/1001/sankt1.jpg", title: "Санкт-Петербург" },
-  { link: "https://mediasole.ru/data/images/468/468254/43s.jpg", title: "Екатеринбург" },
-  { link: "https://tripplanet.ru/wp-content/uploads/europe/russia/chelyabinsk/kirovka.jpg", title: "Челябинск" }
+  { 
+    link: "https://kudann.ru/uploads/29aa4243cab801472fa13993d11909ec.jpeg", title: "Нижний Новгород" 
+  },
+  { 
+    link: "https://www.syl.ru/misc/i/ai/378308/2436551.jpg", 
+    title: "Калининград" 
+  },
+  { 
+    link: "https://s.mediasalt.ru/images/375/375941/original.jpg", 
+    title: "Байкал" 
+  },
+  { 
+    link: "https://1001bus-ufa.ru/images/1001/sankt1.jpg", 
+    title: "Санкт-Петербург" 
+  },
+  { 
+    link: "https://avatars.mds.yandex.net/get-zen_doc/3930378/pub_5f8fdd3a6dc8f92eda7141da_5f8fde39c2b29d22942af341/scale_1200", 
+    title: "Екатеринбург" 
+  },
+  { 
+    link: "https://tripplanet.ru/wp-content/uploads/europe/russia/chelyabinsk/kirovka.jpg", 
+    title: "Челябинск" 
+  }
 ]
 
 //Функция открытия попапа
@@ -45,45 +68,37 @@ function handleSubmitProfileForm (evt) {
 formElement.addEventListener ('submit', handleSubmitProfileForm);
 
 //Открытие попапа редактирования профиля
-
-const buttonProfileOpen = document.querySelector ('.profile__button');
   
 buttonProfileOpen.addEventListener ('click', function(){
-openPopup (popupProfile);
-nameInput.value = profileName.textContent;
-jobInput.value = profileProfession.textContent;;
+  openPopup (popupProfile);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileProfession.textContent;;
 });
   
 //Закрытие попапа редактирования профиля
 
-const buttonProfileClose = document.querySelector ('.button-close');
-
 buttonProfileClose.addEventListener ('click', function(){
-closePopup (popupProfile);
+  closePopup (popupProfile);
 });
   
 //Открытие попапа добавки карточек
-
-const buttonPhotoAddOpen = document.querySelector ('.profile__button-photo');
   
 buttonPhotoAddOpen.addEventListener ('click', function(){
-openPopup (popupPhotoAdd);
+  openPopup (popupPhotoAdd);
 });
   
 //Закрытие попапа добавки карточек
 
-const buttonPhotoAddClose = document.querySelector ('.button-photo-close')
-
 buttonPhotoAddClose.addEventListener ('click', function(){
-closePopup (popupPhotoAdd);
+  closePopup (popupPhotoAdd);
 });
 
 // Функция создания карточки
 
 function createCard (element){
-  item = template.content.cloneNode (true);
+  const item = template.content.cloneNode(true);
   const itemImage = item.querySelector ('.photo__image');
-
+  
   item.querySelector ('.photo__text').textContent = element.title
   itemImage.src = element.link
   itemImage.alt = element.title
@@ -100,31 +115,30 @@ function createCard (element){
 
   buttonDelete.addEventListener ('click', () => {
     box.remove(true);
-    })
+  })
 
   //Open photo in popup
   const image = item.querySelector ('.photo__image');
-  const modalImg = document.querySelector (".popup__image");
-  const captionText = document.querySelector (".popup__caption");
 
   image.addEventListener ('click', function(){
-  openPopup (popupImage);
-  modalImg.src = image.src;
-  captionText.textContent = image.alt;
+    modalImg.src = image.src;
+    modalImg.alt = image.alt;
+    captionText.textContent = image.alt;
+    openPopup (popupImage);
   });
+
+  return item;
 }
 //Функция отправки формы
-
-function renderCard (item) {
-  cardList.prepend (item);
-}
+function renderCard(element) {
+  cardList.prepend(createCard(element));
+} 
 
 // 6 card from box
-
 initialCards.forEach ((element) => {
-  createCard (element);
-  renderCard (item);
+  renderCard (element);
 });
+
 // Photo-add
 const formElementPhoto = document.querySelector('.popup__form-photo');
 
@@ -135,21 +149,20 @@ function handleSubmitPhotoForm (evt) {
     title: cardNameInput.value, 
     link: cardLinkInput.value
   }; 
-    createCard (newCards);
-    renderCard (item);
+    renderCard (newCards);
 
   closePopup(popupPhotoAdd);
-  //Очистка input-ов вставки карточек
 
+  //Очистка input-ов вставки карточек
   cardNameInput.value = "";
   cardLinkInput.value = "";
 }
 
 formElementPhoto.addEventListener ('submit', handleSubmitPhotoForm);
 
-  //Закрытие попапа с фото
-  const buttonImageClose = document.querySelector ('.button-image-close');
+//Закрытие попапа с фото
+const buttonImageClose = document.querySelector ('.button-image-close');
 
-  buttonImageClose.addEventListener ('click', function(){
-    closePopup (popupImage);
-    });
+buttonImageClose.addEventListener ('click', function(){
+  closePopup (popupImage);
+});
