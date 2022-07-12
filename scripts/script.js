@@ -31,6 +31,30 @@ function closePopup (popup) {
   popup.classList.remove("popup_opened");
 }
 
+//Закрытие попапа через клавишу Esc
+function closePopupEsc (popup) {
+  document.addEventListener ('keydown', function(evt) {
+    if(evt.keyCode == 27) {
+      closePopup(popup);
+    }
+  })
+}
+closePopupEsc (popupPhotoAdd);
+closePopupEsc (popupProfile);
+closePopupEsc (popupImage);
+
+//Закрытие попапа кликом на оверлей
+function closePopupOverlay (popup) {
+  popup.addEventListener('click', (event) =>{
+    if(event.target === event.currentTarget){
+      closePopup(popup);
+    }
+  });
+}
+closePopupOverlay (popupPhotoAdd);
+closePopupOverlay (popupProfile);
+closePopupOverlay (popupImage);
+
 //Отправка формы редактирования профиля
 
 function handleSubmitProfileForm (evt) {
