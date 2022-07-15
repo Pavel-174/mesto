@@ -20,32 +20,39 @@ const buttonProfileClose = document.querySelector ('.button-close');
 const buttonPhotoAddOpen = document.querySelector ('.profile__button-photo');
 const buttonPhotoAddClose = document.querySelector ('.button-photo-close');
 
-//Функция открытия попапа
-
-function openPopup (popup) {
+//Функция reset button
+function resetButton (popup) {
   const submitButton = popup.querySelector('.popup__save');
   submitButton.setAttribute('disabled', true);
   submitButton.classList.remove('popup__save_valid');
   submitButton.classList.add('popup__save_invalid');
+}
+
+//Функция открытия попапа
+
+function openPopup (popup) {
   popup.classList.add("popup_opened");
+  closePopupEsc (popup);
 } 
 
 //Функция закрытия попапов
 function closePopup (popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener ('keydown', function(evt) {
+    if(evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  })
 }
 
 //Закрытие попапа через клавишу Esc
 function closePopupEsc (popup) {
   document.addEventListener ('keydown', function(evt) {
-    if(evt.keyCode == 27) {
+    if(evt.key === 'Escape') {
       closePopup(popup);
     }
   })
 }
-closePopupEsc (popupPhotoAdd);
-closePopupEsc (popupProfile);
-closePopupEsc (popupImage);
 
 //Закрытие попапа кликом на оверлей
 function closePopupOverlay (popup) {
@@ -121,13 +128,11 @@ function createCard (element){
   })
 
   //Open photo in popup
-  const image = item.querySelector ('.photo__image');
-  const text = item.querySelector ('.photo__text');
 
-  image.addEventListener ('click', function(){
-    modalImg.src = image.src;
-    modalImg.alt = image.alt;
-    captionText.textContent = text.textContent;
+  itemImage.addEventListener ('click', function(){
+    modalImg.src = element.link;
+    modalImg.alt = element.title;
+    captionText.textContent = element.title;
     openPopup (popupImage);
   });
 
@@ -160,6 +165,7 @@ function handleSubmitPhotoForm (evt) {
   //Очистка input-ов вставки карточек
   cardNameInput.value = "";
   cardLinkInput.value = "";
+  resetButton (popupPhotoAdd);
 }
 
 formElementPhoto.addEventListener ('submit', handleSubmitPhotoForm);
