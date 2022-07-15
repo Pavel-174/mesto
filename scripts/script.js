@@ -1,7 +1,7 @@
 const buttonClose = document.querySelectorAll (".popup__close");
 const popups = document.querySelectorAll (".popup");
 const buttonShow = document.querySelectorAll (".button-show");
-const formElement = document.querySelector ('.popup__form');
+const formElement = document.querySelector ('.popup__form-profile');
 const nameInput = document.querySelector ('#popup__name');
 const jobInput = document.querySelector ('#popup__profession');
 const profileName = document.querySelector ('.profile__name');
@@ -23,6 +23,10 @@ const buttonPhotoAddClose = document.querySelector ('.button-photo-close');
 //Функция открытия попапа
 
 function openPopup (popup) {
+  const submitButton = popup.querySelector('.popup__save');
+  submitButton.setAttribute('disabled', true);
+  submitButton.classList.remove('popup__save_valid');
+  submitButton.classList.add('popup__save_invalid');
   popup.classList.add("popup_opened");
 } 
 

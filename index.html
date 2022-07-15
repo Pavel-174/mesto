@@ -40,11 +40,11 @@
     <div class="popup popup_type_profile">
         <div class="popup__container">
             <h2 class="popup__header">Редактировать профиль</h2>
-            <form class="popup__form" name="name-profession" method="post">
+            <form class="popup__form popup__form-profile" name="name-profession" method="post" novalidate>
                 <input required class="popup__text" id="popup__name" type="text" placeholder="Имя" name="name" minlength="2" maxlength="40">
-                <span class="popup__text-eror"></span>
+                <span class="popup__text-error" id="popup__name-error"></span>
                 <input required class="popup__text" id="popup__profession" type="text" placeholder="О себе" name="profession" minlength="2" maxlength="200">
-                <span class="popup__text-eror"></span>
+                <span class="popup__text-error" id="popup__profession-error"> </span>
                 <input class="popup__save button-hide" type="submit" value="Сохранить">
             </form>
             <button class="popup__close button-close" type="button" aria-label="кнопка закрытия"></button>
@@ -53,11 +53,11 @@
     <div class="popup popup_type_photo">
         <div class="popup__container">
             <h2 class="popup__header">Новое место</h2>
-            <form class="popup__form-photo" name="photo-add" method="post">
+            <form class="popup__form popup__form-photo" name="photo-add" method="post" novalidate>
                 <input required class="popup__text" id="popup__place" type="text" placeholder="Название" name="name" minlength="1" maxlength="30">
-                <span class="popup__text-eror"></span>
+                <span class="popup__text-error" id="popup__place-error"> </span>
                 <input required class="popup__text" id="popup__link" type="url" placeholder="Ссылка на картинку" name="profession">
-                <span class="popup__text-eror"></span>
+                <span class="popup__text-error" id="popup__link-error"> </span>
                 <input class="popup__save button-hide" type="submit" value="Сохранить">
             </form>
             <button class="popup__close button-photo-close" type="button" aria-label="кнопка закрытия"></button>
@@ -81,6 +81,7 @@
         </li>
     </template>
     <script src="./scripts/cards.js"></script>
-    <script src="./scripts/script.js"></script>   
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>
