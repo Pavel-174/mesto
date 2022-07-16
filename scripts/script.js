@@ -32,27 +32,22 @@ function resetButton (popup) {
 
 function openPopup (popup) {
   popup.classList.add("popup_opened");
-  closePopupEsc (popup);
+  document.addEventListener('keydown', closeByEsc);
 } 
 
 //Функция закрытия попапов
 function closePopup (popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener ('keydown', function(evt) {
-    if(evt.key === 'Escape') {
-      closePopup(popup);
-    }
-  })
+  document.removeEventListener('keydown', closeByEsc);
 }
 
 //Закрытие попапа через клавишу Esc
-function closePopupEsc (popup) {
-  document.addEventListener ('keydown', function(evt) {
-    if(evt.key === 'Escape') {
-      closePopup(popup);
-    }
-  })
-}
+function closeByEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup); 
+  }
+}  
 
 //Закрытие попапа кликом на оверлей
 function closePopupOverlay (popup) {
