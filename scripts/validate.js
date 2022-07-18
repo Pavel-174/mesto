@@ -40,10 +40,10 @@ const setEventListeners = (formElement, {inputSelector, submitButtonSelector, in
   });
 };
 
-function enableValidation({popupFormElement, inputSelector, submitButtonSelector, inactiveButtonClass, activeButtonClass}){
+function enableValidation({popupFormElement, inputSelector, submitButtonSelector, inactiveButtonClass, activeButtonClass, errorInput}){
   const formList = Array.from(document.querySelectorAll(popupFormElement));
   formList.forEach((formElement) => {
-    setEventListeners(formElement, {inputSelector, submitButtonSelector, inactiveButtonClass, activeButtonClass});
+    setEventListeners(formElement, {inputSelector, submitButtonSelector, inactiveButtonClass, activeButtonClass, errorInput});
 });
 }
 
